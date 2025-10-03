@@ -1,0 +1,10 @@
+{
+  "name": "kalshi-trader",
+  "version": "0.1.0",
+  "dependencies": [
+    "nlohmann-json",
+    "spdlog",
+    "cpr",
+    "catch2"
+  ]
+}

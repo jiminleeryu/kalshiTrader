@@ -1,0 +1,21 @@
+# Build
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+cmake_install.cmake
+Makefile
+/vcpkg_installed/
+
+# IDE
+.vscode/
+.idea/
+
+# MacOS
+.DS_Store
+
+# Logs
+*.log
+
+# Generated
+dist/
+
