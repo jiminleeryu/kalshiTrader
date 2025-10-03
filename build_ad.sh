@@ -54,7 +54,24 @@ build_project() {
 
 run_application() {
     echo "Running application..."
-    ./build/src/kalshi_trader_app
+    # Try known binary names; fall back to any executable in build/src
+    if [ -x ./build/src/kalshi_trader_app ]; then
+        ./build/src/kalshi_trader_app
+        return
+    fi
+    if [ -x ./build/src/receiver ]; then
+        ./build/src/receiver
+        return
+    fi
+    # Fallback: attempt to run the first executable file in build/src
+    exec_file=$(find ./build/src -maxdepth 1 -type f -perm +111 | head -n 1)
+    if [ -n "$exec_file" ]; then
+        echo "Running discovered executable: $exec_file"
+        "$exec_file"
+        return
+    fi
+    echo "No runnable application found in build/src"
+    exit 1
 }
 
 # Parse command line arguments
