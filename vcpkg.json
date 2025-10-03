@@ -5,6 +5,7 @@
     "nlohmann-json",
     "spdlog",
     "cpr",
-    "catch2"
+  "ixwebsocket",
+  "catch2"
   ]
 }

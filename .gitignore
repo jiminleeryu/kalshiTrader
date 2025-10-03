@@ -19,3 +19,9 @@ Makefile
 # Generated
 dist/
 
+# Environment variables and secrets
+.env
+*.key
+*.pem
+*.crt
+

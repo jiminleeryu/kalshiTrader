@@ -36,9 +36,9 @@ show_help() {
 }
 
 clean_build() {
-    echo "🧹 Cleaning build directory..."
+    echo "Cleaning build directory..."
     rm -rf "$BUILD_DIR"
-    echo "✅ Build directory cleaned"
+    echo "Build directory cleaned"
 }
 
 configure_project() {

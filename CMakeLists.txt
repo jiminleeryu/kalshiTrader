@@ -19,6 +19,7 @@ endif()
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(cpr CONFIG REQUIRED)
+# uWebSockets removed; using ixwebsocket instead
 
 # Sources
 add_subdirectory(src)

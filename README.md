@@ -56,3 +56,24 @@ Notes:
 
 - Keep `vcpkg.json` in the project root — this manifest is what vcpkg reads to install the correct packages for the project.
 - CI should also bootstrap or cache the same vcpkg installation to ensure reproducible builds.
+
+## Run
+
+The application reads credentials from environment variables. At minimum set:
+
+- `KALSHI_API_KEY_ID` — your Kalshi API key id
+- `KALSHI_PRIVATE_KEY` — your RSA private key in PEM format. If storing in an env var, replace real newlines with `\n` and this app will normalize them back.
+- Optional: `KALSHI_CHANNELS` (comma-separated channels like `ticker,orderbook_delta`) and `KALSHI_MARKET_TICKER` for orderbook subscriptions.
+
+Example (macOS / Linux):
+
+```bash
+export KALSHI_API_KEY_ID="your-key-id"
+# If your PEM contains newlines, convert them to literal \n when exporting
+export KALSHI_PRIVATE_KEY="$'-----BEGIN PRIVATE KEY-----\nMIIEv...\n-----END PRIVATE KEY-----'"
+export KALSHI_CHANNELS="ticker,orderbook_delta"
+export KALSHI_MARKET_TICKER="KXHARRIS24-LSV"
+./build/src/kalshi_trader_app
+```
+
+The client will create the required authentication headers, open a websocket to `wss://api.kalshi.com/trade-api/ws/v2`, and print live messages to stdout.
